@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Navbar,
@@ -11,6 +9,8 @@ import {
   NavLink,
   Container,
 } from 'reactstrap';
+import RegisterModal from './auth/RegisterModal';
+import Logout from './auth/Logout';
 
 class appNavbar extends Component {
   state = {
@@ -23,39 +23,30 @@ class appNavbar extends Component {
     });
   };
   render() {
-    return ( <
-      div >
-      <
-      Navbar color = 'dark'
-      dark expand = 'sm'
-      className = 'mg-5' >
-      <
-      Container >
-      <
-      NavbarBrand href = '/' > Shopping List < /NavbarBrand> <
-      NavbarToggler onClick = {
-        this.toggle
-      }
-      /> <
-      Collapse isOpen = {
-        this.state.isOpen
-      }
-      navbar >
-      <
-      Nav className = 'ml-auto'
-      navbar >
-      <
-      NavItem >
-      <
-      NavLink href = 'https://github.com/asfafasa/mernsave' >
-      GitHub <
-      /NavLink> <
-      /NavItem> <
-      /Nav> <
-      /Collapse> <
-      /Container> <
-      /Navbar> <
-      /div>
+    return (
+      <div>
+        <Navbar color='dark' dark expand='sm' className='mg-5'>
+          <Container>
+            <NavbarBrand href='/'> Shopping List </NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className='ml-auto' navbar>
+                <NavItem>
+                  <NavLink href='https://github.com/asfafasa/mernsave'>
+                    GitHub
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <RegisterModal />
+                </NavItem>
+                <NavItem>
+                  <Logout />
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
+      </div>
     );
   }
 }
